@@ -40,7 +40,7 @@
         VoltarIndex();
     }
 
-//	setInterval(sincronismo, 10000);
+	setInterval(sincronismo, 10000);
 	
 	function sincronismo(){
 	
