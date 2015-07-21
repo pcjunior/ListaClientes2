@@ -9,6 +9,36 @@
 		<script src="js/jquery.mobile-1.1.0.min.js"></script>
 
 		<script type="text/javascript" src="phonegap.js"></script>  
+		<script>
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			//
+			function onDeviceReady() {
+				navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			}
+
+			// onSuccess Geolocation
+			//
+			function onSuccess(position) {
+				var element = document.getElementById('geolocation');
+				element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+									'Longitude: '          + position.coords.longitude             + '<br />' +
+									'Altitude: '           + position.coords.altitude              + '<br />' +
+									'Accuracy: '           + position.coords.accuracy              + '<br />' +
+									'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+									'Heading: '            + position.coords.heading               + '<br />' +
+									'Speed: '              + position.coords.speed                 + '<br />' +
+									'Timestamp: '          + position.timestamp                    + '<br />';
+			}
+
+			// onError Callback receives a PositionError object
+			//
+			function onError(error) {
+				alert('code: '    + error.code    + '\n' +
+					  'message: ' + error.message + '\n');
+			}
+		</script>
 
 	</head>
 
@@ -30,33 +60,17 @@
 						<li><a href="criar.html" onclick="" data-icon="plus" data-theme="b">Criar</a></li>
 						<li><a href="" onclick="apagarDadosCliente()" data-icon="plus" data-theme="b">Apagar Dados</a></li>
 						<li><a href="" onclick="sincronismo()" data-icon="plus" data-theme="b">Sincronismo</a></li>
-						<li><a href="" onclick="getLocation()" data-icon="plus" data-theme="b">GPS</a></li>
+						<li><a href="" onclick="onDeviceReady()" data-icon="plus" data-theme="b">GPS</a></li>
 					</ul>
 				</div>
 			</div>
 
 			<div data-role="content">
-				<p id='demo'></p>
+				<p id='geolocation'></p>
 				<ul id="detalhescliente" data-role="listview"></ul>
 
 			</div>
 
 		</div>
-		<script>
-		var x = document.getElementById("demo");
-
-		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(showPosition);
-			} else { 
-				x.innerHTML = "Geolocation is not supported by this browser.";
-			}
-		}
-
-		function showPosition(position) {
-			x.innerHTML = "Latitude: " + position.coords.latitude + 
-			"<br>Longitude: " + position.coords.longitude;	
-		}
-		</script>
 	</body>
 </html>
