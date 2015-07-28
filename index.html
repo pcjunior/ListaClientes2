@@ -21,7 +21,7 @@
 			// onSuccess Geolocation
 			//
 			function onSuccess(position) {
-			alert(position.coords);
+
 				var element = document.getElementById('geolocation');
 				element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
 									'Longitude: '          + position.coords.longitude             + '<br />' +
@@ -46,6 +46,8 @@
                     'Título do alerta',
                     'Fechar'
                 );
+				navigator.notification.beep(3);
+				navigator.notification.vibrate(2000);
             }
 		</script>
 
