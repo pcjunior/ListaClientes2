@@ -39,6 +39,14 @@
 				alert('code: '    + error.code    + '\n' +
 					  'message: ' + error.message + '\n');
 			}
+			function alerta() {
+                navigator.notification.alert(
+                    'Mensagem do alerta!',
+                    function(){},
+                    'Título do alerta',
+                    'Fechar'
+                );
+            }
 		</script>
 
 	</head>
@@ -62,6 +70,7 @@
 						<li><a href="" onclick="apagarDadosCliente()" data-icon="plus" data-theme="b">Apagar Dados</a></li>
 						<li><a href="" onclick="sincronismo()" data-icon="plus" data-theme="b">Sincronismo</a></li>
 						<li><a href="" onclick="onDeviceReady()" data-icon="plus" data-theme="b">GPS</a></li>
+						<li><a href="" onclick="alerta()" data-icon="plus" data-theme="b">Alerta</a></li>
 					</ul>
 				</div>
 			</div>
